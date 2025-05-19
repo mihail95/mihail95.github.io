@@ -3,6 +3,11 @@
     <div class="title">
       {{ pubTitle }}
     </div>
+    <div class="actions">
+      <div class="action" v-on:click="downloadFile('html')">Download as HTML</div>
+      <div class="action" v-on:click="downloadFile('pdf')">Download as PDF</div>
+      <div class="action" v-on:click="visitLink()">Link to paper</div>
+    </div>
   </div>
 </template>
 
@@ -32,12 +37,25 @@ export default {
     return {
       pubTitle: this.presentation.title,
       file_name: this.presentation.file_name,
+      pubLink: this.presentation.link,
     };
   },
   methods: {
     visitProject() {
-      window.open(`/presentations/${this.file_name}`, '_blank')
-    }
+      window.open(`/presentations/${this.file_name}.html`, '_blank')
+    },
+    visitLink() {
+      window.open(this.pubLink, '_blank')
+    },
+    downloadFile(filetype) {
+      const link = document.createElement('a');
+      link.href = `/presentations/${this.file_name}.${filetype}`;
+      link.target = '_blank';
+      link.download = `${this.file_name}.${filetype}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    },
   },
 };
 </script>
@@ -69,5 +87,18 @@ export default {
   flex-shrink: 0;
   flex-basis: max-content;
   border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.actions {
+  margin-top:1em;
+  display: flex;
+  flex-direction: row;
+  gap: 1.5em;
+}
+
+.action {
+  &:hover {
+    color:#66B95C;
+  }
 }
 </style>
