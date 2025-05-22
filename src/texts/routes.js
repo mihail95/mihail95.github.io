@@ -23,5 +23,10 @@ export const routes = {
     "de" : "Kontakt",
     "en" : "Contact",
     "bg" : "Контакт"
+  },
+  "presentations": {
+    "de" : "Präsentationen",
+    "en" : "Presentations",
+    "bg" : "Презентации"
   }
 }
