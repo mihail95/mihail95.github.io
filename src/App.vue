@@ -9,6 +9,7 @@
             <RouterLink to="/about">{{ routeTexts.about[selectedLang] }}</RouterLink>
             <RouterLink to="/projects">{{ routeTexts.projects[selectedLang] }}</RouterLink>
             <RouterLink to="/publications">{{ routeTexts.publications[selectedLang] }}</RouterLink>
+            <RouterLink to="/presentations">{{ routeTexts.presentations[selectedLang] }}</RouterLink>
             <RouterLink to="/contact">{{ routeTexts.contact[selectedLang] }}</RouterLink>
           </nav>
           <nav role="navigation" v-if="isSmallScreen()">
@@ -32,6 +33,10 @@
                 <li>
                   <RouterLink to="/publications" v-on:click="toggleMenuCheckbox()">{{
                     routeTexts.publications[selectedLang] }}</RouterLink>
+                </li>
+                <li>
+                  <RouterLink to="/presentations" v-on:click="toggleMenuCheckbox()">{{
+                    routeTexts.presentations[selectedLang] }}</RouterLink>
                 </li>
                 <li>
                   <RouterLink to="/contact" v-on:click="toggleMenuCheckbox()">{{ routeTexts.contact[selectedLang] }}
